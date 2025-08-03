@@ -1,0 +1,122 @@
+﻿@model SMSApplication.Models.ApplicationRole
+
+@{
+
+    ViewBag.Title = "Details";
+    var i = 1; }
+
+<h2>Role Details.</h2>
+
+
+
+
+
+<div class="container-fluid">
+    <div class="user-profile">
+        <div class="row">
+            <div class="col-xl-3 col-lg-12 col-md-5 xl-35">
+                <div class="default-according style-1 faq-accordion job-accordion">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="p-0">
+                                        <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon2" aria-expanded="true" aria-controls="collapseicon2">Role Information Details</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="collapseicon2" aria-labelledby="collapseicon2" data-parent="#accordion">
+                                    <div class="card-body post-about">
+                                        <ul>
+                                            <li>
+                                                <div class="icon"><i data-feather="user"></i></div>
+                                                <div>
+                                                    <h5>Role Name</h5>
+                                                    <dl>
+                                                        <dd>
+                                                            @Html.DisplayFor(model => model.Name)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="icon"><i data-feather="user"></i></div>
+                                                <div>
+                                                    <h5>Description</h5>
+                                                    <dl>
+                                                        <dd>
+                                                            @Html.DisplayFor(model => model.Description)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-12 col-md-7 xl-65">
+                <div class="row">
+                    <!-- profile post start-->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="profile-post">
+                                <div class="post-header">
+                                    <div class="media">
+                                        <div class="media-body align-self-center">
+                                            <a href="social-app.html">
+                                                <h5 class="user-name">List of Users in this Role</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="post-setting"><i class="fa fa-ellipsis-h"></i></div>
+                                </div>
+
+
+                                <div class="post-body">
+                                    @if (ViewBag.UserCount == 0)
+                                    {
+                        <hr />
+                                        <p>No users found in this role.</p>}
+
+                                    <table class="table">
+
+                                        @foreach (var item in ViewBag.Users)
+                                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>
+                                    @item.UserName
+                                </td>
+                            </tr>i++;
+                                        }
+                                    </table>
+
+
+                                    <br />
+                                    <p class="btn btn-sm btn-outline-warning">
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                                    </p>
+                                    <p class="btn btn-sm btn-outline-info">
+                                        @Html.ActionLink("Back to List", "Index")
+                                    </p>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SMSApplication.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "User List";
+    var i = 1;
+}
+
+
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h5> <a class="pull-left" href="#">All User List</a></h5>           
+            <a class="btn btn-sm btn-success  pull-right" href="/UsersAdmin/create">Add New User </a>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Sl</th>
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+                        <th>Branch Code</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            @if (item.Email == "admin@mail.com")
+                            {
+                                <td>
+                                    <div class="btn btn-sm btn-primary">
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FullName)
+
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BranchCode)
+                                </td>
+                            }
+
+                            <td>
+                                <a href="@Url.Action("Details", "UsersAdmin", new { id = item.Id })" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> View </a>
+                                <a href="@Url.Action("Edit", "UsersAdmin", new { id = item.Id })" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                <a href="@Url.Action("Delete", "UsersAdmin", new { id = item.Id })" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Delete </a>
+                            </td>
+
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+             
+            </table>
+        </div>
+    </div>
+</div>

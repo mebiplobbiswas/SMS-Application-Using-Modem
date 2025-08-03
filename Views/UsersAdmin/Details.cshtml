@@ -1,0 +1,131 @@
+﻿@model SMSApplication.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+<div class="container-fluid">
+    <div class="user-profile">
+        <div class="row">           
+            <div class="col-xl-3 col-lg-12 col-md-5 xl-35">
+                <div class="default-according style-1 faq-accordion job-accordion">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="p-0">
+                                        <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon2" aria-expanded="true" aria-controls="collapseicon2">User Information Details</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="collapseicon2" aria-labelledby="collapseicon2" data-parent="#accordion">
+                                    <div class="card-body post-about">
+                                        <ul>
+                                            <li>
+                                                <div class="icon"><i data-feather="user"></i></div>
+                                                <div>
+                                                    <h5>Full Name</h5>   
+                                                    <dl>
+                                                        <dd>
+                                                            @Html.DisplayFor(model => model.FullName)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon"><i data-feather="user"></i></div>
+                                                <div>
+                                                    <h5>Email</h5>
+                                                    <dl>
+                                                        <dd>
+                                                            @Html.DisplayFor(model => model.Email)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </li>
+                                            
+                                            <li>
+                                                <div class="icon"><i data-feather="home"></i></div>
+                                                <div>
+                                                    <h5>Branch Code</h5>
+                                                    <dl>
+                                                        <dd>
+                                                            @Html.DisplayFor(model => model.BranchCode)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </li>
+                                            
+                                            <li>
+                                                <div class="icon"><i data-feather="area"></i></div>
+                                                <div>
+                                                    <h5>Zone ID</h5>
+                                                    <dl>
+                                                        <dd>
+                                                            @Html.DisplayFor(model => model.ZoneID)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </li>
+                                        </ul>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-12 col-md-7 xl-65">
+                <div class="row">
+                    <!-- profile post start-->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="profile-post">
+                                <div class="post-header">
+                                    <div class="media">
+                                        <div class="media-body align-self-center">
+                                            <a href="social-app.html">
+                                                <h5 class="user-name">List of Roles for this User</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="post-setting"><i class="fa fa-ellipsis-h"></i></div>
+                                </div>
+                                <div class="post-body">
+                                    @if (ViewBag.RoleNames.Count == 0)
+                                    {
+                                        <hr />
+                                        <p>No roles found for this user.</p>
+                                    }
+
+                                    <table class="table">
+
+                                        @foreach (var item in ViewBag.RoleNames)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <h5>Role Name : @item</h5>
+                                                </td>                                              
+                                            </tr>
+                                        }
+                                    </table>
+                                    <p>
+                                        <a class="btn btn-sm btn-outline-warning" href="@Url.Action("Edit","UsersAdmin",new { id=Model.Id})">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                        <a class="btn btn-sm btn-outline-info" href="@Url.Action("Index","UsersAdmin")">
+                                            <i class="fa fa-list-ul"></i> Back To List
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                 
+                </div>
+            </div>         
+        </div>
+    </div>
+</div>
+
+
+
